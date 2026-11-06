@@ -1,0 +1,1166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SchoolPro - Smart School Management System">
+    <title>SchoolPro | School Management System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN PAGE -->
+    <section class="login-page" id="loginPage">
+        <div class="login-container">
+
+            <div class="login-brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h1>SchoolPro</h1>
+                <p>Smart School Management System</p>
+            </div>
+
+            <div class="login-heading">
+                <h2>Welcome Back!</h2>
+                <p>Sign in to manage your school</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="input-box">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginRole">Login As</label>
+                    <select id="loginRole" required>
+                        <option value="admin">Administrator</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+
+                <div class="login-options">
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+                    <a href="#" id="forgotPassword">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Sign In <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <p class="login-message" id="loginMessage"></p>
+            </form>
+
+            <div class="login-footer">
+                Don't have an account?
+                <a href="#" id="showRegister">Create Account</a>
+            </div>
+
+            <div class="demo-info">
+                <i class="fa-solid fa-circle-info"></i>
+                Demo Admin: admin@schoolpro.com / admin123
+                <br>
+                Demo Teacher: teacher@schoolpro.com / teacher123
+                <br>
+                Demo Student: student@schoolpro.com / student123
+            </div>
+        </div>
+
+        <div class="login-decoration">
+            <div class="decoration-content">
+                <i class="fa-solid fa-book-open"></i>
+                <h2>Education is the key to success.</h2>
+                <p>Manage your school smarter, faster and better with SchoolPro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER PAGE -->
+    <section class="register-page hidden" id="registerPage">
+        <div class="register-container">
+
+            <div class="brand-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <h2>Create Your Account</h2>
+            <p>Join the SchoolPro management platform</p>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" placeholder="Enter email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create password" minlength="6" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerRole">Register As</label>
+                    <select id="registerRole" required>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Create Account
+                </button>
+
+                <p id="registerMessage" class="login-message"></p>
+            </form>
+
+            <p class="login-footer">
+                Already have an account?
+                <a href="#" id="showLogin">Sign In</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN APPLICATION -->
+    <div class="app-container hidden" id="appContainer">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                    <h2>SchoolPro</h2>
+                    <span>Management System</span>
+                </div>
+
+                <button class="sidebar-close" id="sidebarClose">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- SCHOOL PROFILE -->
+            <div class="school-profile">
+                <div class="school-avatar">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+                <div>
+                    <h4>Bright Future School</h4>
+                    <span>Academic Session 2026-27</span>
+                </div>
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="sidebar-navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="students">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span>Students</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="teachers">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Teachers</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="classes">
+                    <i class="fa-solid fa-school"></i>
+                    <span>Classes & Sections</span>
+                </a>
+
+                <p class="nav-heading">ACADEMIC</p>
+
+                <a href="#" class="nav-link" data-page="attendance">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Attendance</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="grades">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Grade Management</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="timetable">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Timetable</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="exams">
+                    <i class="fa-solid fa-file-pen"></i>
+                    <span>Exam Schedule</span>
+                </a>
+
+                <p class="nav-heading">FINANCE</p>
+
+                <a href="#" class="nav-link" data-page="fees">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Management</span>
+                </a>
+
+                <p class="nav-heading">COMMUNICATION</p>
+
+                <a href="#" class="nav-link" data-page="parents">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Parent Communication</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="reports">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reports</span>
+                </a>
+
+                <p class="nav-heading">SYSTEM</p>
+
+                <a href="#" class="nav-link" data-page="settings">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="sidebar-bottom">
+                <div class="help-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4>Need Help?</h4>
+                    <p>Contact school administration support.</p>
+                    <button id="helpButton">Get Support</button>
+                </div>
+
+                <button class="logout-btn" id="logoutButton">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP NAVBAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h2 id="pageTitle">Dashboard</h2>
+                        <p>Welcome to your school administration panel</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="globalSearch" placeholder="Search anything...">
+                    </div>
+
+                    <button class="icon-button" id="darkModeButton" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <button class="icon-button notification-button" id="notificationButton" title="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile" id="userProfile">
+                        <img src="https://ui-avatars.com/api/?name=School+Admin&background=f59e0b&color=fff" alt="Administrator profile">
+
+                        <div>
+                            <h4 id="loggedUserName">School Admin</h4>
+                            <span id="loggedUserRole">Administrator</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                </div>
+            </header>
+
+            <!-- DASHBOARD PAGE -->
+            <section class="page-section active-page" id="dashboardPage">
+
+                <div class="welcome-banner">
+                    <div>
+                        <span class="welcome-tag">
+                            <i class="fa-solid fa-sun"></i>
+                            SCHOOL ADMINISTRATION
+                        </span>
+
+                        <h1>Welcome to SchoolPro!</h1>
+
+                        <p>
+                            Here's what's happening in your school today.
+                            Manage everything from one place.
+                        </p>
+
+                        <button id="quickStudentButton">
+                            <i class="fa-solid fa-plus"></i>
+                            Add New Student
+                        </button>
+                    </div>
+
+                    <div class="welcome-illustration">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                </div>
+
+                <!-- STATISTICS -->
+                <div class="section-heading">
+                    <div>
+                        <h3>School Overview</h3>
+                        <p>Important statistics at a glance</p>
+                    </div>
+
+                    <select id="dashboardPeriod">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                    </select>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon students-icon">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <span class="stat-label">Total Students</span>
+                        </div>
+
+                        <h2 id="totalStudents">1,250</h2>
+                        <p class="stat-description">
+                            <span class="positive">
+                                <i class="fa-solid fa-arrow-up"></i> 8.5%
+                            </span>
+                            Compared to last month
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon teachers-icon">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <span class="stat-label">Total Teachers</span>
+                        </div>
+
+                        <h2 id="totalTeachers">68</h2>
+                        <p class="stat-description">
+                            <span class="positive">
+                                <i class="fa-solid fa-arrow-up"></i> 4.2%
+                            </span>
+                            Compared to last month
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon attendance-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <span class="stat-label">Attendance Rate</span>
+                        </div>
+
+                        <h2 id="attendanceRate">94.5%</h2>
+                        <p class="stat-description">
+                            <span class="positive">
+                                <i class="fa-solid fa-arrow-up"></i> 2.4%
+                            </span>
+                            Compared to last month
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon fees-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <span class="stat-label">Fees Collected</span>
+                        </div>
+
+                        <h2 id="totalFees">₹8.5L</h2>
+                        <p class="stat-description">
+                            <span class="positive">
+                                <i class="fa-solid fa-arrow-up"></i> 12.8%
+                            </span>
+                            Compared to last month
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- CHARTS SECTION -->
+                <div class="dashboard-grid">
+
+                    <div class="dashboard-card attendance-chart-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Attendance Overview</h3>
+                                <p>Student attendance statistics</p>
+                            </div>
+
+                            <select id="attendanceChartPeriod">
+                                <option value="week">Weekly</option>
+                                <option value="month">Monthly</option>
+                            </select>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card fee-chart-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Fee Collection</h3>
+                                <p>School fee payment status</p>
+                            </div>
+
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="feeChart"></canvas>
+                        </div>
+
+                        <div class="fee-legend">
+                            <span><i class="legend-dot paid"></i> Paid</span>
+                            <span><i class="legend-dot pending"></i> Pending</span>
+                            <span><i class="legend-dot overdue"></i> Overdue</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- LOWER DASHBOARD -->
+                <div class="dashboard-grid lower-grid">
+
+                    <div class="dashboard-card recent-students-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Recent Students</h3>
+                                <p>Recently enrolled students</p>
+                            </div>
+
+                            <button class="view-all-btn" data-go="students">View All</button>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Class</th>
+                                        <th>Admission Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="recentStudentsTable">
+                                    <tr>
+                                        <td>
+                                            <div class="student-cell">
+                                                <img src="https://ui-avatars.com/api/?name=Aarav+Sharma&background=fef3c7&color=92400e" alt="Aarav">
+                                                <span>Aarav Sharma</span>
+                                            </div>
+                                        </td>
+                                        <td>Class 8-A</td>
+                                        <td>28 Oct 2026</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="student-cell">
+                                                <img src="https://ui-avatars.com/api/?name=Ananya+Singh&background=fef3c7&color=92400e" alt="Ananya">
+                                                <span>Ananya Singh</span>
+                                            </div>
+                                        </td>
+                                        <td>Class 6-B</td>
+                                        <td>26 Oct 2026</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="student-cell">
+                                                <img src="https://ui-avatars.com/api/?name=Rohan+Kumar&background=fef3c7&color=92400e" alt="Rohan">
+                                                <span>Rohan Kumar</span>
+                                            </div>
+                                        </td>
+                                        <td>Class 9-A</td>
+                                        <td>24 Oct 2026</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card quick-overview">
+                        <div class="card-header">
+                            <div>
+                                <h3>Quick Overview</h3>
+                                <p>Today's school summary</p>
+                            </div>
+                        </div>
+
+                        <div class="overview-item">
+                            <div class="overview-icon present">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h4>Present Today</h4>
+                                <p>Students marked present</p>
+                            </div>
+                            <strong id="presentToday">1,181</strong>
+                        </div>
+
+                        <div class="overview-item">
+                            <div class="overview-icon absent">
+                                <i class="fa-solid fa-user-xmark"></i>
+                            </div>
+                            <div>
+                                <h4>Absent Today</h4>
+                                <p>Students marked absent</p>
+                            </div>
+                            <strong id="absentToday">69</strong>
+                        </div>
+
+                        <div class="overview-item">
+                            <div class="overview-icon pending">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Pending Fees</h4>
+                                <p>Students with outstanding fees</p>
+                            </div>
+                            <strong id="pendingFees">125</strong>
+                        </div>
+
+                        <div class="overview-item">
+                            <div class="overview-icon classes">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <h4>Total Classes</h4>
+                                <p>Active classes and sections</p>
+                            </div>
+                            <strong id="totalClasses">30</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RECENT ACTIVITIES -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Recent Activities</h3>
+                            <p>Latest updates from your school</p>
+                        </div>
+                    </div>
+
+                    <div id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <div>
+                                <h4>New student registered</h4>
+                                <p>Aarav Sharma joined Class 8-A</p>
+                            </div>
+                            <span>Today</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <div>
+                                <h4>Fee payment received</h4>
+                                <p>School received a new fee payment</p>
+                            </div>
+                            <span>Today</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div>
+                                <h4>New announcement</h4>
+                                <p>Upcoming examination notice published</p>
+                            </div>
+                            <span>Yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- STUDENT MANAGEMENT PAGE -->
+            <section class="page-section" id="studentsPage">
+
+                <div class="students-page">
+
+                    <div class="students-heading">
+                        <div>
+                            <span class="welcome-tag">
+                                <i class="fa-solid fa-users"></i>
+                                STUDENT DIRECTORY
+                            </span>
+                            <h1>Student Management</h1>
+                            <p>Manage student admissions, profiles and academic information.</p>
+                        </div>
+
+                        <div class="students-heading-actions">
+                            <button type="button" class="secondary-action-btn" id="exportStudentsButton">
+                                <i class="fa-solid fa-file-export"></i>
+                                Export CSV
+                            </button>
+
+                            <button type="button" class="primary-action-btn" id="addStudentButton">
+                                <i class="fa-solid fa-plus"></i>
+                                Add New Student
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STUDENT SUMMARY -->
+                    <div class="student-summary-grid">
+
+                        <article class="student-summary-card">
+                            <div class="student-summary-icon">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <span>Total Students</span>
+                                <strong id="studentCountTotal">0</strong>
+                            </div>
+                        </article>
+
+                        <article class="student-summary-card">
+                            <div class="student-summary-icon active">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <span>Active Students</span>
+                                <strong id="studentCountActive">0</strong>
+                            </div>
+                        </article>
+
+                        <article class="student-summary-card">
+                            <div class="student-summary-icon inactive">
+                                <i class="fa-solid fa-user-clock"></i>
+                            </div>
+                            <div>
+                                <span>Inactive Students</span>
+                                <strong id="studentCountInactive">0</strong>
+                            </div>
+                        </article>
+
+                        <article class="student-summary-card">
+                            <div class="student-summary-icon classes">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <span>Classes Covered</span>
+                                <strong id="studentClassCount">0</strong>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- STUDENT DIRECTORY -->
+                    <div class="dashboard-card student-directory-card">
+
+                        <div class="student-toolbar">
+
+                            <div class="student-search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input
+                                    type="search"
+                                    id="studentSearch"
+                                    placeholder="Search by name, student ID or parent..."
+                                    aria-label="Search students">
+                            </div>
+
+                            <div class="student-filters">
+
+                                <select id="studentClassFilter" aria-label="Filter by class">
+                                    <option value="">All Classes</option>
+                                    <option value="1">Class 1</option>
+                                    <option value="2">Class 2</option>
+                                    <option value="3">Class 3</option>
+                                    <option value="4">Class 4</option>
+                                    <option value="5">Class 5</option>
+                                    <option value="6">Class 6</option>
+                                    <option value="7">Class 7</option>
+                                    <option value="8">Class 8</option>
+                                    <option value="9">Class 9</option>
+                                    <option value="10">Class 10</option>
+                                </select>
+
+                                <select id="studentSectionFilter" aria-label="Filter by section">
+                                    <option value="">All Sections</option>
+                                    <option value="A">Section A</option>
+                                    <option value="B">Section B</option>
+                                    <option value="C">Section C</option>
+                                </select>
+
+                                <select id="studentStatusFilter" aria-label="Filter by status">
+                                    <option value="">All Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+
+                                <button type="button" class="clear-filter-btn" id="clearStudentFilters" title="Clear filters">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                    Reset
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="student-table-heading">
+                            <div>
+                                <h3>All Students</h3>
+                                <p>Student records and admission details</p>
+                            </div>
+
+                            <span class="student-result-count" id="studentResultCount">
+                                0 records
+                            </span>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="students-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Student ID</th>
+                                        <th>Class</th>
+                                        <th>Parent / Guardian</th>
+                                        <th>Contact</th>
+                                        <th>Admission Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="studentsTableBody">
+                                    <tr>
+                                        <td colspan="8" class="student-empty-state">
+                                            <i class="fa-solid fa-user-graduate"></i>
+                                            <strong>No student records yet</strong>
+                                            <span>Select “Add New Student” to create the first record.</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="student-table-footer">
+                            <span id="studentTableFooterText">Showing 0 students</span>
+
+                            <button type="button" class="text-action-btn" id="studentAddFirstButton">
+                                <i class="fa-solid fa-plus"></i>
+                                Add student
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TEACHER MANAGEMENT -->
+            <section class="page-section" id="teachersPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <h2>Teacher Management</h2>
+                    <p>Manage teacher profiles, subjects and assigned classes.</p>
+                </div>
+            </section>
+
+            <!-- CLASSES -->
+            <section class="page-section" id="classesPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-school"></i>
+                    <h2>Classes & Sections</h2>
+                    <p>Manage classes, sections and class teachers.</p>
+                </div>
+            </section>
+
+            <!-- ATTENDANCE -->
+            <section class="page-section" id="attendancePage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h2>Attendance Management</h2>
+                    <p>Mark and manage daily student attendance.</p>
+                </div>
+            </section>
+
+            <!-- GRADES -->
+            <section class="page-section" id="gradesPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2>Grade Management</h2>
+                    <p>Manage marks, grades and report cards.</p>
+                </div>
+            </section>
+
+            <!-- TIMETABLE -->
+            <section class="page-section" id="timetablePage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h2>Class Timetable</h2>
+                    <p>Create and manage class schedules.</p>
+                </div>
+            </section>
+
+            <!-- EXAMS -->
+            <section class="page-section" id="examsPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-file-pen"></i>
+                    <h2>Exam Schedule</h2>
+                    <p>Manage upcoming examinations.</p>
+                </div>
+            </section>
+
+            <!-- FEES -->
+            <section class="page-section" id="feesPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-wallet"></i>
+                    <h2>Fee Management</h2>
+                    <p>Manage fee structures, payments and receipts.</p>
+                </div>
+            </section>
+
+            <!-- PARENT COMMUNICATION -->
+            <section class="page-section" id="parentsPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Parent Communication</h2>
+                    <p>Manage parent details and announcements.</p>
+                </div>
+            </section>
+
+            <!-- REPORTS -->
+            <section class="page-section" id="reportsPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <h2>School Reports</h2>
+                    <p>Generate student, attendance and fee reports.</p>
+                </div>
+            </section>
+
+            <!-- SETTINGS -->
+            <section class="page-section" id="settingsPage">
+                <div class="module-placeholder">
+                    <i class="fa-solid fa-gear"></i>
+                    <h2>Settings</h2>
+                    <p>Manage your school application settings.</p>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="app-footer">
+                <p>© 2026 SchoolPro. All Rights Reserved.</p>
+                <p>Designed for Smarter School Management.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- ADD / EDIT STUDENT MODAL -->
+    <div class="modal-backdrop hidden" id="studentModal" role="dialog" aria-modal="true" aria-labelledby="studentModalTitle">
+
+        <div class="student-modal">
+
+            <div class="student-modal-header">
+                <div>
+                    <span class="welcome-tag">STUDENT RECORD</span>
+                    <h2 id="studentModalTitle">Add New Student</h2>
+                    <p>Enter the student's details below.</p>
+                </div>
+
+                <button type="button" class="modal-close-btn" id="closeStudentModal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="studentForm">
+
+                <input type="hidden" id="studentRecordId">
+
+                <!-- PHOTO UPLOAD -->
+                <div class="student-photo-upload">
+
+                    <div class="student-photo-preview" id="studentPhotoPreview">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <label for="studentPhoto">Student Photograph</label>
+                        <input type="file" id="studentPhoto" accept="image/png,image/jpeg,image/webp">
+                        <small>JPG, PNG or WEBP. Keep the image under 2 MB.</small>
+                    </div>
+
+                </div>
+
+                <!-- PERSONAL INFORMATION -->
+                <div class="student-form-section">
+
+                    <h3>
+                        <i class="fa-regular fa-id-card"></i>
+                        Personal Information
+                    </h3>
+
+                    <div class="student-form-grid">
+
+                        <div class="form-group">
+                            <label for="studentName">Full Name <span>*</span></label>
+                            <input type="text" id="studentName" maxlength="70" placeholder="Enter student's full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentDob">Date of Birth <span>*</span></label>
+                            <input type="date" id="studentDob" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentGender">Gender <span>*</span></label>
+                            <select id="studentGender" required>
+                                <option value="">Select gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentEmail">Student Email</label>
+                            <input type="email" id="studentEmail" placeholder="student@example.com">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ACADEMIC INFORMATION -->
+                <div class="student-form-section">
+
+                    <h3>
+                        <i class="fa-solid fa-school"></i>
+                        Academic Information
+                    </h3>
+
+                    <div class="student-form-grid">
+
+                        <div class="form-group">
+                            <label for="studentClass">Class <span>*</span></label>
+                            <select id="studentClass" required>
+                                <option value="">Select class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentSection">Section <span>*</span></label>
+                            <select id="studentSection" required>
+                                <option value="">Select section</option>
+                                <option value="A">Section A</option>
+                                <option value="B">Section B</option>
+                                <option value="C">Section C</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentRoll">Roll Number</label>
+                            <input type="number" id="studentRoll" min="1" max="999" placeholder="e.g. 12">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentAdmissionDate">Admission Date <span>*</span></label>
+                            <input type="date" id="studentAdmissionDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentStatus">Student Status <span>*</span></label>
+                            <select id="studentStatus" required>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- PARENT INFORMATION -->
+                <div class="student-form-section">
+
+                    <h3>
+                        <i class="fa-solid fa-people-roof"></i>
+                        Parent / Guardian Information
+                    </h3>
+
+                    <div class="student-form-grid">
+
+                        <div class="form-group">
+                            <label for="studentParentName">Parent / Guardian Name <span>*</span></label>
+                            <input type="text" id="studentParentName" maxlength="70" placeholder="Enter parent or guardian name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentRelation">Relationship</label>
+                            <select id="studentRelation">
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Guardian">Guardian</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentPhone">Contact Number <span>*</span></label>
+                            <input type="tel" id="studentPhone" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentParentEmail">Parent Email</label>
+                            <input type="email" id="studentParentEmail" placeholder="parent@example.com">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="studentAddress">Residential Address</label>
+                            <textarea id="studentAddress" rows="3" maxlength="250" placeholder="Enter complete address"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p class="student-form-message" id="studentFormMessage" role="alert"></p>
+
+                <div class="student-modal-actions">
+                    <button type="button" class="secondary-action-btn" id="cancelStudentForm">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-action-btn" id="saveStudentButton">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Student
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- STUDENT PROFILE / VIEW MODAL -->
+    <div class="modal-backdrop hidden" id="studentDetailsModal" role="dialog" aria-modal="true" aria-labelledby="studentDetailsName">
+
+        <div class="student-details-modal">
+
+            <div class="student-modal-header">
+                <div>
+                    <span class="welcome-tag">STUDENT PROFILE</span>
+                    <h2>Student Details</h2>
+                </div>
+
+                <button type="button" class="modal-close-btn" id="closeStudentDetails" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="studentDetailsContent"></div>
+
+            <div class="student-modal-actions">
+                <button type="button" class="secondary-action-btn" id="closeStudentDetailsButton">
+                    Close
+                </button>
+
+                <button type="button" class="primary-action-btn" id="editStudentFromDetails">
+                    <i class="fa-solid fa-pen"></i>
+                    Edit Student
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
